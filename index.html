@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --color-primary: #f05123;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.15;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            background: #333;
+
+        }
+
+        .wrapper-player {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+            padding: 20px;
+            background: linear-gradient(180deg, var(--color-primary), rgb(231, 193, 200));
+            border-radius: 10px;
+        }
+
+        .wrapper-header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .header-circle {
+            /* display: flex; */
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+            cursor: pointer;
+            transition: all ease .3s;
+        }
+
+        .header-circle:hover {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+        }
+
+        .header-circle i {
+            font-size: 14px;
+            color: rgba(0, 0, 0, .4);
+        }
+
+        .wrapper-img {
+            box-sizing: border-box;
+            align-self: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            overflow: hidden;
+            box-shadow: 0 0 10px 10px rgb(194, 123, 194);
+        }
+
+        .wrapper-img img {
+            width: 100px;
+        }
+
+        .myRotate {
+            animation: myRotate linear 20s infinite;
+        }
+
+        .myRotate1 {
+            animation: myRotate ease 1s 10;
+        }
+
+        .song-name {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .singer {
+            font-size: 12px;
+            color: rgba(0, 0, 0, .8);
+
+        }
+
+        .wrapper-audio {
+            width: 100%;
+        }
+
+        .wrapper-audio audio {
+            width: 100%;
+            margin-bottom: 20px;
+
+        }
+
+        #progress {
+            background: pink;
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--color-primary);
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #progress::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 17px;
+            height: 17px;
+            background: var(--color-primary);
+            border: 4px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+
+        }
+
+        .wrapper-song-control {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .wrapper-control-icon {
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+            cursor: pointer;
+            transition: all ease .3s;
+
+        }
+
+        .wrapper-control-icon:hover {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+
+        }
+
+        .wrapper-control-icon:nth-child(2) {
+            background: var(--color-primary);
+            transform: scale(1.3);
+        }
+
+        .wrapper-control-icon i {
+            font-size: 14px;
+
+            color: var(--color-primary);
+        }
+
+        .wrapper-control-icon:nth-child(2) i {
+            color: #fff;
+        }
+
+        @keyframes myRotate {
+            from {
+                transform: rotate(0);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="wrapper-player">
+            <div class="wrapper-header mb-20">
+                <div class="header-circle">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="header-circle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+            <div class="wrapper-img mb-20">
+                <img class="song-img" src="./images/ly_hai.png" alt="Picture">
+            </div>
+            <h4 class="song-name">Không yêu thì thôi</h4>
+            <p class="singer mb-20"> Lý Hải </p>
+            <div class="wrapper-audio">
+                <audio controls id="song">
+                    <source src="./Khong-Yeu-Thi-Thoi-Ly-Hai.mp3" type="" />
+                </audio>
+            </div>
+            <input type="range" name="" id="progress" value="0">
+            <div class="wrapper-song-control">
+                <div class="wrapper-control-icon">
+                    <i class="fa-solid fa-backward"></i>
+                </div>
+                <div class="wrapper-control-icon" id="wrapper-play">
+                    <i class="fa-solid fa-play play-btn"></i>
+                </div>
+                <div class="wrapper-control-icon">
+                    <i class="fa-solid fa-forward"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const songElm = document.querySelector('#song');
+        const progressElm = document.querySelector('#progress');
+        const playBtnElm = document.querySelector('.play-btn');
+        const playBtnWrapperElm = document.querySelector('#wrapper-play');
+        const songImgElm = document.querySelector('.song-img');
+
+        // let isPause = true;
+
+
+        songElm.onloadedmetadata = function () {
+            progressElm.max = song.duration;
+            progressElm.value = song.currentTime;
+        }
+
+        playBtnWrapperElm.onclick = () => {
+            if (playBtnElm.classList.contains('fa-play')) {
+                songElm.play();
+                playBtnElm.classList.remove('fa-play');
+                playBtnElm.classList.add('fa-pause');
+                if (songImgElm.classList.contains('myRotate1')) {
+                    songImgElm.classList.remove('myRotate1');
+                }
+                songImgElm.classList.add('myRotate');
+            }
+            else {
+                songElm.pause();
+                playBtnElm.classList.remove('fa-pause');
+                playBtnElm.classList.add('fa-play');
+                songImgElm.classList.remove('myRotate');
+                songImgElm.classList.add('myRotate1');
+
+            }
+
+            console.log(1);
+        }
+        setInterval(songElm.onloadedmetadata, 300);
+
+    </script>
+</body>
+
+</html>
